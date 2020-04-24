@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Proiect Riw</title>
+
+    <style>
+		div {
+		    border-radius: 5px;
+		    background-color: #AAAAAA;
+		    padding: 20px;
+		}
+
+		/* Style the search field */
+		form.formSearch input[type=text] {
+		    width: 100%;
+		    padding: 12px 20px;
+		    margin: 8px 0;
+		    display: inline-block;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-sizing: border-box;
+		}
+
+		ul li{
+		    list-style:none;
+
+		}
+		a{
+		    font-size: 25px;
+		}
+		a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:active {
+            text-decoration: underline;
+        }
+
+        p{
+            font-size=30px;
+            color: red;
+        }
+
+
+
+	</style>
+</head>
+<body>
+
+    <div>
+
+        <form class="formSearch" th:action="@{/search}" method="get" role="form">
+
+            <h1>Find it!</h1>
+            <input type="text" id="query" th:name="query" placeholder="Search..."/>
+        </form>
+
+
+        <div th:if="${results}">
+
+            <ul>
+                <li th:each="doc:${docs}">
+
+                    <a th:href="${doc}" th:text="${doc}"></a>
+                    <br/><br/>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div th:if="${notResult}">
+            <p>Niciun rezultat!</p>
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>
